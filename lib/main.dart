@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kaist_delivery/restaurant_list.dart';
 import 'package:get/get.dart';
 import 'package:kaist_delivery/view/restaurant_list_view.dart';
 
@@ -20,11 +19,4 @@ class MyApp extends StatelessWidget {
       home: RestaurantListView(),
     );
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return MaterialApp(
-  //     home: RestaurantListView(),
-  //   );
-  // }
 }
