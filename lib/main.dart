@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kaist_delivery/view/tab1/restaurant_list_view.dart';
+import 'package:kaist_delivery/view/home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,12 +12,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: '레스토랑 앱',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return const ScreenUtilInit(
+      designSize: Size(390, 850),
+      // TODO : getPages 루트 설정
+      child: GetMaterialApp(
+        title: '레스토랑 앱',
+        home: HomeView(),
       ),
-      home: RestaurantListView(),
     );
   }
 }
