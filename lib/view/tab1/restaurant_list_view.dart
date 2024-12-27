@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controller/restaurant_controller.dart';
+import '../../controller/tab1/restaurant_controller.dart';
 
 class RestaurantListView extends StatelessWidget {
   RestaurantListView({Key? key}) : super(key: key);

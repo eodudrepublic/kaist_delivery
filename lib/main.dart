@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kaist_delivery/view/restaurant_list_view.dart';
+import 'package:kaist_delivery/view/tab1/restaurant_list_view.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import '../model/restaurant.dart';
+import '../../model/restaurant.dart';
 
 class RestaurantController extends GetxController {
   // 레스토랑 목록을 저장하는 옵저버블 리스트
