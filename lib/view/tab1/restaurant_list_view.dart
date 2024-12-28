@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kaist_delivery/view/tab1/widget/restaurant_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get.dart';
 import '../../controller/tab1/restaurant_controller.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RestaurantListView extends StatelessWidget {
   RestaurantListView({super.key});
@@ -37,66 +37,13 @@ class RestaurantListView extends StatelessWidget {
           itemCount: controller.restaurantList.length,
           itemBuilder: (context, index) {
             final restaurant = controller.restaurantList[index];
-            return _restaurantCard(restaurant);
+            return RestaurantCard(
+              restaurant: restaurant,
+              onCall: _call,
+            );
           },
         );
       }),
-    );
-  }
-
-  Widget _restaurantCard(restaurant) {
-    return Card(
-      margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-      child: ListTile(
-        leading: Image.asset(
-          'assets/image/' + restaurant.name + '.jpg',
-          width: 80.w,
-          height: 80.h,
-          fit: BoxFit.cover,
-        ),
-        title: Text(
-          restaurant.name,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16.sp,
-          ),
-        ),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Icon(Icons.phone, size: 16.sp, color: Colors.grey),
-                SizedBox(width: 5.w),
-                Text(
-                  restaurant.phone,
-                  style: TextStyle(fontSize: 14.sp),
-                ),
-                Spacer(),
-                TextButton(
-                  onPressed: () {
-                    _call(restaurant.phone);
-                  },
-                  child: Text(
-                    '전화연결',
-                    style: TextStyle(fontSize: 14.sp),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Icon(Icons.access_time, size: 16.sp, color: Colors.grey),
-                SizedBox(width: 5.w),
-                Text(
-                  '${restaurant.openTime} - ${restaurant.closeTime}',
-                  style: TextStyle(fontSize: 14.sp),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
