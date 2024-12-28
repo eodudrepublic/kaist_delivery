@@ -30,6 +30,7 @@ class ContentController extends GetxController {
           jsonResponse.map((json) => Content.fromJson(json)).toList();
       // 옵저버블 리스트 업데이트
       contentList.assignAll(loadedContents);
+      // TODO : 이거 랜덤으로 바꾸면 좋지 않을까?
     } catch (e) {
       Get.snackbar('에러', '컨텐츠 데이터를 불러오지 못했습니다.');
     } finally {
