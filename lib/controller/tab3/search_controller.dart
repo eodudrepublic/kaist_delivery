@@ -41,4 +41,8 @@ class RestaurantSearchController extends GetxController {
       );
     }
   }
+  // 검색 결과 초기화 메서드 추가
+  void clearSearchResults() {
+    filteredList.assignAll(restaurantList); // 전체 레스토랑 목록으로 초기화
+  }
 }
