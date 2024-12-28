@@ -10,6 +10,7 @@ class RestaurantListView extends StatelessWidget {
   // GetX를 사용하여 컨트롤러 초기화
   final RestaurantController controller = Get.put(RestaurantController());
 
+  //call 기능
   Future<void> _call(String phoneNumber) async {
     final Uri launchUri = Uri(
       scheme: 'tel',
@@ -24,6 +25,7 @@ class RestaurantListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Obx(() {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());

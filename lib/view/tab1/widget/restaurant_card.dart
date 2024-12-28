@@ -14,13 +14,17 @@ class RestaurantCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+      margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
       child: ListTile(
-        leading: Image.asset(
-          'assets/image/' + restaurant.name + '.jpg',
-          width: 80.w,
-          height: 80.h,
-          fit: BoxFit.cover,
+        tileColor: Colors.white,
+        leading: ClipRRect(
+          child: Container(
+            width: 0.2.sw, height: 0.2.sw,
+            child: Image.asset(
+              'assets/image/' + restaurant.name + '.jpg',
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         title: Text(
           restaurant.name,
@@ -29,38 +33,44 @@ class RestaurantCard extends StatelessWidget {
             fontSize: 16.sp,
           ),
         ),
-        subtitle: Column(
+        subtitle: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.phone, size: 16.sp, color: Colors.grey),
-                SizedBox(width: 5.w),
-                Text(
-                  restaurant.phone,
-                  style: TextStyle(fontSize: 14.sp),
+                SizedBox(height: 0.01.sh,),
+                Row(
+                  children: [
+                    Icon(Icons.phone, size: 16.sp, color: Colors.grey),
+                    SizedBox(width: 5.w),
+                    Text(
+                      restaurant.phone,
+                      style: TextStyle(fontSize: 14.sp),
+                    ),
+                  ],
                 ),
-                Spacer(),
-                TextButton(
-                  onPressed: () {
-                    onCall(restaurant.phone);
-                  },
-                  child: Text(
-                    '전화연결',
-                    style: TextStyle(fontSize: 14.sp),
-                  ),
+                SizedBox(height: 0.01.sh,),
+                Row(
+                  children: [
+                    Icon(Icons.access_time, size: 16.sp, color: Colors.grey),
+                    Text(
+                      '${restaurant.openTime} - ${restaurant.closeTime}',
+                      style: TextStyle(fontSize: 14.sp),
+                    ),
+                  ],
                 ),
               ],
             ),
-            Row(
-              children: [
-                Icon(Icons.access_time, size: 16.sp, color: Colors.grey),
-                SizedBox(width: 5.w),
-                Text(
-                  '${restaurant.openTime} - ${restaurant.closeTime}',
-                  style: TextStyle(fontSize: 14.sp),
-                ),
-              ],
+            Spacer(),
+            TextButton(
+              onPressed: () {
+                onCall(restaurant.phone);
+              },
+              child: Text(
+                '전화연결',
+                style: TextStyle(fontSize: 14.sp),
+              ),
             ),
           ],
         ),
