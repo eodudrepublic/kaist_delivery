@@ -22,7 +22,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return Container(
       height: 65.sp, // 바 높이 조정
       decoration: BoxDecoration(
-          border: Border(top: BorderSide(color: Colors.black, width: 1.sp))),
+        border: Border(top: BorderSide(color: Colors.black, width: 1.sp)),
+        color: Colors.white,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly, // 아이콘 간격 균등 분배
         crossAxisAlignment: CrossAxisAlignment.center,
