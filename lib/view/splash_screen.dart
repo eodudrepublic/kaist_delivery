@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen>
   void _navigateToHome(){
     Get.off(() => const HomeView(),
         transition: Transition.zoom, // 전환 애니메이션 설정
-        duration: Duration(milliseconds: 1500)); // 애니메이션 지속 시간
+        duration: Duration(milliseconds: 1200)); // 애니메이션 지속 시간
   }
 
   @override
