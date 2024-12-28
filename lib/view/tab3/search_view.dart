@@ -5,13 +5,37 @@ import '../../common/app_colors.dart';
 import '../../controller/tab3/search_controller.dart';
 import '../tab1/widget/restaurant_card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// class SearchView extends StatelessWidget {
+//   SearchView({super.key});
+//
+//   final RestaurantSearchController controller =
+//   Get.put(RestaurantSearchController());
+//   final TextEditingController searchController = TextEditingController();
 
-class SearchView extends StatelessWidget {
-  SearchView({super.key});
+class SearchView extends StatefulWidget {
+  const SearchView({super.key});
 
+  @override
+  _SearchViewState createState() => _SearchViewState();
+}
+
+class _SearchViewState extends State<SearchView> {
   final RestaurantSearchController controller =
-      Get.put(RestaurantSearchController());
-  final TextEditingController searchController = TextEditingController();
+  Get.put(RestaurantSearchController());
+  late TextEditingController searchController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    searchController = TextEditingController(); // 검색 컨트롤러 초기화
+  }
+
+  @override
+  void dispose() {
+    searchController.dispose(); // 검색 컨트롤러 메모리 정리
+    controller.clearSearchResults(); // 검색 결과 초기화
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +55,10 @@ class SearchView extends StatelessWidget {
               borderRadius: BorderRadius.circular(22.r),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.2), // 그림자 색상과 투명도
-                  spreadRadius: 0.5, // 그림자 확산 정도
-                  blurRadius: 5, // 그림자 흐림 정도
-                  offset: const Offset(0, 3), // 그림자의 위치 (x: 오른쪽, y: 아래쪽)
+                  color: Colors.black.withOpacity(0.2),
+                  spreadRadius: 0.5,
+                  blurRadius: 5,
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
@@ -56,12 +80,15 @@ class SearchView extends StatelessWidget {
                     ),
                     cursorColor: AppColors.searchIconColor,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.bold),
+                      color: Colors.black,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    onSubmitted: (value) {
+                      controller.searchRestaurants(value); // 키보드 완료 버튼 눌렀을 때 검색
+                    },
                   ),
                 ),
-                // TODO : 해당 아이콘 버튼 안 눌러도 키보드에서 완료 누르면 검색되도록 기능 추가?
                 IconButton(
                   icon: Icon(
                     Icons.search,
@@ -93,7 +120,6 @@ class SearchView extends StatelessWidget {
                   return RestaurantCard(
                     restaurant: restaurant,
                     onCall: (phoneNumber) {
-                      // 전화 걸기 기능
                       final Uri launchUri = Uri(
                         scheme: 'tel',
                         path: phoneNumber,
