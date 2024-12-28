@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get.dart';
 import '../../controller/tab1/restaurant_controller.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RestaurantListView extends StatelessWidget {
   RestaurantListView({super.key});
@@ -14,7 +15,7 @@ class RestaurantListView extends StatelessWidget {
       scheme: 'tel',
       path: phoneNumber,
     );
-    print(launchUri);
+    //print(launchUri);           //전화번호 맞는지 확인
     if (!await launchUrl(launchUri)) {
       throw '전화번호가 없습니다.';
     }
@@ -37,18 +38,19 @@ class RestaurantListView extends StatelessWidget {
           itemBuilder: (context, index) {
             final restaurant = controller.restaurantList[index];
             return Card(
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
               child: ListTile(
                 leading: Image.asset(
                   'assets/image/' + restaurant.name + '.jpg',
-                  width: 80,
-                  height: 80,
+                  width: 80.w,
+                  height: 80.h,
+                  fit: BoxFit.cover,
                 ),
                 title: Text(
                   restaurant.name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                   ),
                 ),
                 subtitle: Column(
@@ -57,11 +59,11 @@ class RestaurantListView extends StatelessWidget {
                     //SizedBox(height: 5),
                     Row(
                       children: [
-                        Icon(Icons.phone, size: 16, color: Colors.grey),
-                        SizedBox(width: 5),
+                        Icon(Icons.phone, size: 16.sp, color: Colors.grey),
+                        SizedBox(width: 5.w),
                         Text(
                           restaurant.phone,
-                          style: TextStyle(fontSize: 14),
+                          style: TextStyle(fontSize: 14.sp),
                         ), //전화 번호 표시
 
                         Spacer(),
@@ -71,7 +73,7 @@ class RestaurantListView extends StatelessWidget {
                           },
                           child: Text(
                             '전화연결',
-                            style: TextStyle(fontSize: 14),
+                            style: TextStyle(fontSize: 14.sp),
                           ),
                         ) //전화 연결 버튼
                       ],
@@ -79,11 +81,11 @@ class RestaurantListView extends StatelessWidget {
                     //SizedBox(height: 5),
                     Row(
                       children: [
-                        Icon(Icons.access_time, size: 16, color: Colors.grey),
-                        SizedBox(width: 5),
+                        Icon(Icons.access_time, size: 16.sp, color: Colors.grey),
+                        SizedBox(width: 5.w),
                         Text(
                           '${restaurant.openTime} - ${restaurant.closeTime}',
-                          style: TextStyle(fontSize: 14),
+                          style: TextStyle(fontSize: 14.sp),
                         ),
                       ],
                     ),
