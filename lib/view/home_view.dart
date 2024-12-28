@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kaist_delivery/view/tab1/restaurant_list_view.dart';
 import '../common/widget/custom_appbar.dart';
 import '../common/widget/custom_bnb.dart';
 
@@ -10,12 +11,12 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  int _currentIndex = 0;
+  int _currentIndex = 1;
 
   // TODO : tab1, tab2, tab3 만들어서 페이지 연결하기
   final List<Widget> _pages = [
     const Center(child: Text('Food Page')),
-    const Center(child: Text('Menu Page')),
+    RestaurantListView(),
     const Center(child: Text('Search Page')),
   ];
 

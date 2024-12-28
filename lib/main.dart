@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget {
       designSize: Size(390, 850),
       // TODO : getPages 루트 설정
       child: GetMaterialApp(
-        title: '레스토랑 앱',
         home: HomeView(),
       ),
     );
