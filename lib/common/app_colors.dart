@@ -6,4 +6,7 @@ class AppColors {
 
   // 검색 위젯에 쓰이는 옅은 색
   static const Color searchBackgroundColor = Color(0xFFF0E4D5);
+
+  // 검색 아이콘에 쓰이는 회색
+  static const Color searchIconColor = Color(0xFFAEAEAE);
 }
