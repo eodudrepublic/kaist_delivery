@@ -4,6 +4,9 @@ class AppColors {
   // AppBar, Icon 등에 쓰이는 연노랑색
   static const Color mainThemeColor = Color(0xFFF8C87B);
 
+  // BottomNavigationBar에 쓰이는 진노랑색
+  static const Color mainThemeDarkColor = Color(0xFFD28D41);
+
   // 검색 위젯에 쓰이는 회색+노랑색
   static const Color searchBackgroundColor = Color(0xFFF0E4D5);
 
