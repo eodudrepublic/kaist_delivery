@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kaist_delivery/view/tab1/restaurant_list_view.dart';
+import 'package:kaist_delivery/view/tab1/restaurant_view.dart';
 import 'package:kaist_delivery/view/tab2/content_view.dart';
 import 'package:kaist_delivery/view/tab3/search_view.dart';
 import '../common/widget/custom_appbar.dart';
@@ -17,7 +17,7 @@ class _HomeViewState extends State<HomeView> {
 
   final List<Widget> _pages = [
     ContentView(),
-    RestaurantListView(),
+    RestaurantView(),
     SearchView(),
   ];
 

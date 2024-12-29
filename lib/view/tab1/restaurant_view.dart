@@ -4,8 +4,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get.dart';
 import '../../controller/tab1/restaurant_controller.dart';
 
-class RestaurantListView extends StatelessWidget {
-  RestaurantListView({super.key});
+class RestaurantView extends StatelessWidget {
+  RestaurantView({super.key});
 
   // GetX를 사용하여 컨트롤러 초기화
   final RestaurantController controller = Get.put(RestaurantController());
