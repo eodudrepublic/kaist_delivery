@@ -96,6 +96,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               style: TextStyle(
                 fontSize: 12.sp,
                 color: Colors.black, // 라벨 색상
+                // TODO : 라벨 색상을 mainThemeColor로 아이콘과 같게 설정하면 어떨까요?
               ),
             ),
         ],

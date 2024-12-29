@@ -14,8 +14,8 @@ class SearchView extends StatefulWidget {
 }
 
 class _SearchViewState extends State<SearchView> {
-  final RestaurantSearchController controller =
-      Get.put(RestaurantSearchController());
+  // HomeBinding에서 Get.lazyPut으로 초기화한 RestaurantSearchController를 사용
+  final RestaurantSearchController controller = Get.find();
   late TextEditingController searchController = TextEditingController();
 
   @override

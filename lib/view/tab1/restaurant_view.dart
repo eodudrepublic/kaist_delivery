@@ -7,8 +7,8 @@ import '../../controller/tab1/restaurant_controller.dart';
 class RestaurantView extends StatelessWidget {
   RestaurantView({super.key});
 
-  // GetX를 사용하여 컨트롤러 초기화
-  final RestaurantController controller = Get.put(RestaurantController());
+  // HomeBinding에서 Get.lazyPut으로 초기화한 RestaurantController를 사용
+  final RestaurantController controller = Get.find();
 
   //call 기능
   Future<void> _call(String phoneNumber) async {
