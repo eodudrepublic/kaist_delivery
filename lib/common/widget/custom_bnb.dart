@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../app_colors.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
@@ -26,7 +25,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
           BoxShadow(
             color: Colors.grey.withOpacity(0.1),
             blurRadius: 4,
-            offset: Offset(0, -4),
+            offset: const Offset(0, -4),
           ),
         ],
         color: Colors.white,
@@ -84,11 +83,13 @@ class CustomBottomNavigationBar extends StatelessWidget {
   }) {
     return GestureDetector(
       onTap: onTap,
-      child:Column(
+      child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           icon, // 아이콘
-          SizedBox(height: 3,),
+          const SizedBox(
+            height: 3,
+          ),
           if (isSelected && label != null) // 선택된 경우 라벨 표시
             Text(
               label,
@@ -102,4 +103,3 @@ class CustomBottomNavigationBar extends StatelessWidget {
     );
   }
 }
-

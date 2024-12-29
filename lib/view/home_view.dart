@@ -18,7 +18,7 @@ class _HomeViewState extends State<HomeView> {
   final List<Widget> _pages = [
     ContentView(),
     RestaurantView(),
-    SearchView(),
+    const SearchView(),
   ];
 
   void _onItemTapped(int index) {
