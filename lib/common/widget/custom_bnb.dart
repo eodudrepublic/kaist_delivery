@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kaist_delivery/common/app_colors.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
@@ -95,8 +96,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               label,
               style: TextStyle(
                 fontSize: 12.sp,
-                color: Colors.black, // 라벨 색상
-                // TODO : 라벨 색상을 mainThemeColor로 아이콘과 같게 설정하면 어떨까요?
+                color: AppColors.mainThemeDarkColor, // 라벨 색상 -  진한 노랑색
               ),
             ),
         ],
