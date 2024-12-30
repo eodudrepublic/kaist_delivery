@@ -4,7 +4,7 @@ import 'package:kaist_delivery/controller/tab1/restaurant_controller.dart';
 import 'package:kaist_delivery/controller/tab2/content_controller.dart';
 import 'package:kaist_delivery/view/tab1/restaurant_view.dart';
 import 'package:kaist_delivery/view/tab2/content_view.dart';
-import 'package:kaist_delivery/view/tab1/search_view.dart';
+import 'package:kaist_delivery/view/tab3/pick_view.dart';
 import '../common/widget/custom_bnb.dart';
 
 class HomeView extends StatefulWidget {
@@ -20,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
   final List<Widget> _pages = [
     ContentView(),
     RestaurantView(),
-    const SearchView(),
+    const PickView(),
   ];
 
   void _onItemTapped(int index) {

@@ -24,10 +24,9 @@ class MyApp extends StatelessWidget {
               name: '/home',
               page: () => const HomeView(),
               binding: HomeBinding()),
-          // 라우트 설정은 해놨지만, 이걸 써먹지는 못할것 같은데... 추후 develop
           GetPage(name: '/home/restaurants', page: () => RestaurantView()),
           GetPage(name: '/home/contents', page: () => ContentView()),
-          GetPage(name: '/home/search', page: () => const SearchView()),
+          GetPage(name: '/search', page: () => const SearchView()),
         ],
       ),
     );
