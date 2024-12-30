@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  // 카테고리에 쓰이는 더 연한 노랑색
+  static const Color mainThemeLightColor = Color(0xFFFDF5DB);
+
   // AppBar, Icon 등에 쓰이는 연노랑색
   static const Color mainThemeColor = Color(0xFFF8C87B);
 
