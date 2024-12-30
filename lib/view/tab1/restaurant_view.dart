@@ -31,57 +31,57 @@ class _RestaurantViewState extends State<RestaurantView> {
       body: Obx(() {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());
-        }
-
-        if (controller.restaurantList.isEmpty) {
+        } else if (controller.restaurantList.isEmpty) {
           return const Center(child: Text('레스토랑이 없습니다.'));
-        }
+        } else {
+          // 레스토랑 리스트 정렬 -> 영업시간 아닌 식당은 아래에 위치하도록
+          controller.sortRestaurants();
+          controller.filterRestaurantsByCategory();
 
-        // 레스토랑 리스트 정렬 -> 영업시간 아닌 식당은 아래에 위치하도록
-        controller.sortRestaurants();
-        controller.filterRestaurantsByCategory();
-
-        return Column(
-          children: [
-            // 상단 카테고리
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal, // 수평 방향으로 스크롤되는 카테고리 버튼
-                controller: controller.scrollController,
-                child: Row(
-                  children: List.generate(controller.categories.length, (index) {
-                    return _categoryButton(controller.categories[index], index);
-                  }),
+          return Column(
+            children: [
+              // 상단 카테고리
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal, // 수평 방향으로 스크롤되는 카테고리 버튼
+                  controller: controller.scrollController,
+                  child: Row(
+                    children:
+                        List.generate(controller.categories.length, (index) {
+                      return _categoryButton(
+                          controller.categories[index], index);
+                    }),
+                  ),
                 ),
               ),
-            ),
 
-            // NotificationListener로 전체 화면에서 스와이프 감지
-            Expanded(
-              child: NotificationListener<ScrollNotification>(
-                onNotification: (notification) {
-                  if (notification is ScrollUpdateNotification) {
-                    int index = (controller.pageController.page ?? 0).round();
-                    setState(() {
-                      controller.selectedCategoryIndex.value = index;
-                    });
-                  }
-                  return true;
-                },
-                child: PageView(
-                  controller: controller.pageController,
-                  onPageChanged: (index) {
-                    controller.changeCategory(index);
+              // NotificationListener로 전체 화면에서 스와이프 감지
+              Expanded(
+                child: NotificationListener<ScrollNotification>(
+                  onNotification: (notification) {
+                    if (notification is ScrollUpdateNotification) {
+                      int index = (controller.pageController.page ?? 0).round();
+                      setState(() {
+                        controller.selectedCategoryIndex.value = index;
+                      });
+                    }
+                    return true;
                   },
-                  children: controller.categories.map((category) {
-                    return _categoryPage(category);
-                  }).toList(),
+                  child: PageView(
+                    controller: controller.pageController,
+                    onPageChanged: (index) {
+                      controller.changeCategory(index);
+                    },
+                    children: controller.categories.map((category) {
+                      return _categoryPage(category);
+                    }).toList(),
+                  ),
                 ),
               ),
-            ),
-          ],
-        );
+            ],
+          );
+        }
       }),
     );
   }
@@ -113,7 +113,9 @@ class _RestaurantViewState extends State<RestaurantView> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: controller.selectedCategoryIndex.value == index ? Colors.black : Colors.grey,
+              color: controller.selectedCategoryIndex.value == index
+                  ? Colors.black
+                  : Colors.grey,
               width: 1,
             ),
             color: controller.selectedCategoryIndex.value == index
@@ -124,7 +126,9 @@ class _RestaurantViewState extends State<RestaurantView> {
             category,
             style: TextStyle(
               fontSize: 15,
-              color: controller.selectedCategoryIndex.value == index ? Colors.black : Colors.grey,
+              color: controller.selectedCategoryIndex.value == index
+                  ? Colors.black
+                  : Colors.grey,
             ),
           ),
         ),

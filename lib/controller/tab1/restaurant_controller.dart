@@ -18,7 +18,13 @@ class RestaurantController extends GetxController {
   // 카테고리 관련
   var selectedCategoryIndex = 0.obs;
   final List<String> categories = [
-    '전체', '한식', '중식', '분식', '일식', '야식', '아시안',
+    '전체',
+    '한식',
+    '중식',
+    '분식',
+    '일식',
+    '야식',
+    '아시안',
   ];
 
   // 페이지 관련
@@ -38,9 +44,11 @@ class RestaurantController extends GetxController {
   Future<void> loadRestaurants() async {
     try {
       isLoading(true);
-      final String jsonString = await rootBundle.loadString('assets/data/data.json');
+      final String jsonString =
+          await rootBundle.loadString('assets/data/data.json');
       final List<dynamic> jsonResponse = json.decode(jsonString);
-      var loadedRestaurants = jsonResponse.map((json) => Restaurant.fromJson(json)).toList();
+      var loadedRestaurants =
+          jsonResponse.map((json) => Restaurant.fromJson(json)).toList();
 
       restaurantList.assignAll(loadedRestaurants);
       filteredList.assignAll(loadedRestaurants);
@@ -58,7 +66,9 @@ class RestaurantController extends GetxController {
     } else {
       String selectedCategory = categories[selectedCategoryIndex.value];
       filteredList.assignAll(
-        restaurantList.where((restaurant) => restaurant.category == selectedCategory).toList(),
+        restaurantList
+            .where((restaurant) => restaurant.category == selectedCategory)
+            .toList(),
       );
     }
   }
@@ -69,13 +79,33 @@ class RestaurantController extends GetxController {
 
     List<Restaurant> sortedList = List.from(restaurantList);
     sortedList.sort((a, b) {
-      DateTime openA = DateTime(now.year, now.month, now.day, int.parse(a.openTime.split(':')[0]), int.parse(a.openTime.split(':')[1]));
-      DateTime closeA = DateTime(now.year, now.month, now.day, int.parse(a.closeTime.split(':')[0]), int.parse(a.closeTime.split(':')[1]));
+      DateTime openA = DateTime(
+          now.year,
+          now.month,
+          now.day,
+          int.parse(a.openTime.split(':')[0]),
+          int.parse(a.openTime.split(':')[1]));
+      DateTime closeA = DateTime(
+          now.year,
+          now.month,
+          now.day,
+          int.parse(a.closeTime.split(':')[0]),
+          int.parse(a.closeTime.split(':')[1]));
       if (closeA.isBefore(openA)) closeA = closeA.add(const Duration(days: 1));
       bool isOpenA = now.isAfter(openA) && now.isBefore(closeA);
 
-      DateTime openB = DateTime(now.year, now.month, now.day, int.parse(b.openTime.split(':')[0]), int.parse(b.openTime.split(':')[1]));
-      DateTime closeB = DateTime(now.year, now.month, now.day, int.parse(b.closeTime.split(':')[0]), int.parse(b.closeTime.split(':')[1]));
+      DateTime openB = DateTime(
+          now.year,
+          now.month,
+          now.day,
+          int.parse(b.openTime.split(':')[0]),
+          int.parse(b.openTime.split(':')[1]));
+      DateTime closeB = DateTime(
+          now.year,
+          now.month,
+          now.day,
+          int.parse(b.closeTime.split(':')[0]),
+          int.parse(b.closeTime.split(':')[1]));
       if (closeB.isBefore(openB)) closeB = closeB.add(const Duration(days: 1));
       bool isOpenB = now.isAfter(openB) && now.isBefore(closeB);
 
@@ -106,7 +136,8 @@ class RestaurantController extends GetxController {
     } else {
       scrollPosition = 0;
     }
-    scrollController.animateTo(scrollPosition, duration: const Duration(milliseconds: 200), curve: Curves.easeInOut);
+    scrollController.animateTo(scrollPosition,
+        duration: const Duration(milliseconds: 200), curve: Curves.easeInOut);
   }
 
   // 검색 기능 구현
