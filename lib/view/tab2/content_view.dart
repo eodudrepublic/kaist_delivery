@@ -24,11 +24,13 @@ class ContentView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         titleText: '맛집 소개',
         rightIconPath: 'assets/icon/search_icon.png',
-        // TODO : onRightIconTap -> 정의
-        // tab1, tab2에서 모두 search 페이지로 넘어가도록
+        onRightIconTap: () {
+          // TODO : Get.toNamed('/search');
+          // tab1, tab2, tab3에서 모두 search 페이지로 넘어가도록
+        },
       ),
       body: Obx(() => controller.isLoading.value
           ? const Center(child: CircularProgressIndicator())

@@ -75,7 +75,7 @@ class RestaurantView extends StatelessWidget {
 
         // 정렬 기준
         if (isOpenA && !isOpenB) return -1; // A만 영업
-        if (!isOpenA && isOpenB) return 1;  // B만 영업
+        if (!isOpenA && isOpenB) return 1; // B만 영업
         return 0; // 둘 다 열려있거나 닫혀있음
       });
   }
@@ -84,11 +84,13 @@ class RestaurantView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         titleText: 'K-밥심',
         rightIconPath: 'assets/icon/search_icon.png',
-        // TODO : onRightIconTap -> 정의
-        // tab1, tab2에서 모두 search 페이지로 넘어가도록
+        onRightIconTap: () {
+          // TODO : Get.toNamed('/search');
+          // tab1, tab2, tab3에서 모두 search 페이지로 넘어가도록
+        },
       ),
       body: Obx(() {
         if (controller.isLoading.value) {
