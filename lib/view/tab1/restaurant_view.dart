@@ -22,6 +22,63 @@ class RestaurantView extends StatelessWidget {
     }
   }
 
+  // 영업 상태 확인 및 정렬 -> 영업 중인 가게가 먼저 오도록 정렬
+  List<dynamic> _sortRestaurants(List<dynamic> restaurants) {
+    DateTime now = DateTime.now();
+
+    return List.from(restaurants)
+      ..sort((a, b) {
+        // a의 영업 상태 계산
+        DateTime openA = DateTime(
+          now.year,
+          now.month,
+          now.day,
+          int.parse(a.openTime.split(':')[0]),
+          int.parse(a.openTime.split(':')[1]),
+        );
+        DateTime closeA = DateTime(
+          now.year,
+          now.month,
+          now.day,
+          int.parse(a.closeTime.split(':')[0]),
+          int.parse(a.closeTime.split(':')[1]),
+        );
+        // close 시간이 다음날 새벽인 경우
+        if (closeA.isBefore(openA)) {
+          closeA = closeA.add(const Duration(days: 1));
+        }
+
+        bool isOpenA = now.isAfter(openA) && now.isBefore(closeA);
+
+        // b의 영업 상태 계산
+        DateTime openB = DateTime(
+          now.year,
+          now.month,
+          now.day,
+          int.parse(b.openTime.split(':')[0]),
+          int.parse(b.openTime.split(':')[1]),
+        );
+        DateTime closeB = DateTime(
+          now.year,
+          now.month,
+          now.day,
+          int.parse(b.closeTime.split(':')[0]),
+          int.parse(b.closeTime.split(':')[1]),
+        );
+        // close 시간이 다음날 새벽인 경우
+        if (closeB.isBefore(openB)) {
+          closeB = closeB.add(const Duration(days: 1));
+        }
+
+        bool isOpenB = now.isAfter(openB) && now.isBefore(closeB);
+
+        // 정렬 기준
+        if (isOpenA && !isOpenB) return -1; // A만 영업
+        if (!isOpenA && isOpenB) return 1;  // B만 영업
+        return 0; // 둘 다 열려있거나 닫혀있음
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +92,13 @@ class RestaurantView extends StatelessWidget {
           return const Center(child: Text('레스토랑이 없습니다.'));
         }
 
+        // 레스토랑 리스트 정렬 -> 영업시간 아닌 식당은 아래에 위치하도록
+        final sortedList = _sortRestaurants(controller.restaurantList);
+
         return ListView.builder(
-          itemCount: controller.restaurantList.length,
+          itemCount: sortedList.length,
           itemBuilder: (context, index) {
-            final restaurant = controller.restaurantList[index];
+            final restaurant = sortedList[index];
             return RestaurantCard(
               restaurant: restaurant,
               onCall: _call,
