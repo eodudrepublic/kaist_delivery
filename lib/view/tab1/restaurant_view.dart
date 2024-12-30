@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:kaist_delivery/view/tab1/widget/restaurant_card.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get.dart';
+import '../../common/app_colors.dart';
 import '../../common/widget/custom_appbar.dart';
+import '../../model/restaurant.dart';
 import '../../controller/tab1/restaurant_controller.dart';
+import 'package:kaist_delivery/view/tab1/widget/restaurant_card.dart';
 
 class RestaurantView extends StatefulWidget {
   const RestaurantView({super.key});
@@ -16,14 +19,16 @@ class _RestaurantViewState extends State<RestaurantView> {
   // HomeBinding에서 Get.lazyPut으로 초기화한 RestaurantController를 사용
   final RestaurantController controller = Get.find();
 
-  /// 스와이프해서 카테고리 이동
+  /// -----TODO 1 : 아래의 기능을 RestaurantController로 이동(refactoring)-----
+
+  // 스와이프해서 카테고리 이동
   PageController _pageController = PageController();
   ScrollController _scrollController = ScrollController();
 
   // 선택된 카테고리 인덱스 -> 0은 전체
   int _selectedCategoryIndex = 0;
 
-  /// 카테고리별 필터링 함수
+  // 카테고리별 필터링 함수
   List<Restaurant> _filterRestaurantsByCategory(List<Restaurant> restaurants) {
     if (_selectedCategoryIndex == 0) {
       return restaurants; // "전체" 카테고리일 경우 모든 식당을 보여줌
@@ -58,7 +63,7 @@ class _RestaurantViewState extends State<RestaurantView> {
     }
   }
 
-  /// 영업 상태 확인 및 정렬 -> 영업 중인 가게가 먼저 오도록 정렬
+  // 영업 상태 확인 및 정렬 -> 영업 중인 가게가 먼저 오도록 정렬
   List<Restaurant> _sortRestaurants(List<dynamic> restaurants) {
     DateTime now = DateTime.now();
 
@@ -110,13 +115,16 @@ class _RestaurantViewState extends State<RestaurantView> {
 
         // 정렬 기준
         if (isOpenA && !isOpenB) return -1; // A만 영업
-        if (!isOpenA && isOpenB) return 1;  // B만 영업
+        if (!isOpenA && isOpenB) return 1; // B만 영업
         return 0; // 둘 다 열려있거나 닫혀있음
       });
   }
 
+  /// -----TODO 2 : 위의 기능을 RestaurantController로 이동(refactoring)-----
+
   @override
   Widget build(BuildContext context) {
+    // TODO : 화면 틀 좌우 여백 20.sp로 통일 필요
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CustomAppBar(
@@ -145,22 +153,22 @@ class _RestaurantViewState extends State<RestaurantView> {
             // 상단 카테고리
             Padding(
               padding: const EdgeInsets.all(8.0),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal, // 수평 방향으로 스크롤되는 카테고리 버튼
-                  controller: _scrollController,
-                  child: Row(
-                    children: [
-                      _categoryButton('전체', 0),
-                      _categoryButton('한식', 1),
-                      _categoryButton('중식', 2),
-                      _categoryButton('분식', 3),
-                      _categoryButton('일식', 4),
-                      _categoryButton('야식', 5),
-                      _categoryButton('아시안', 6),
-                    ],
-                  ),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal, // 수평 방향으로 스크롤되는 카테고리 버튼
+                controller: _scrollController,
+                child: Row(
+                  children: [
+                    _categoryButton('전체', 0),
+                    _categoryButton('한식', 1),
+                    _categoryButton('중식', 2),
+                    _categoryButton('분식', 3),
+                    _categoryButton('일식', 4),
+                    _categoryButton('야식', 5),
+                    _categoryButton('아시안', 6),
+                  ],
                 ),
               ),
+            ),
 
             // NotificationListener로 전체 화면에서 스와이프 감지
             Expanded(
@@ -185,10 +193,9 @@ class _RestaurantViewState extends State<RestaurantView> {
                     double scrollPosition = index * 100.w;
                     // 스크롤 위치를 3번째 버튼부터 시작하도록 설정
                     if (index >= 3) {
-                      scrollPosition = (index-2)* 100.w; // 3번째 버튼을 고정
-                    }
-                    else{
-                      scrollPosition=0;
+                      scrollPosition = (index - 2) * 100.w; // 3번째 버튼을 고정
+                    } else {
+                      scrollPosition = 0;
                     }
 
                     _scrollController.animateTo(
@@ -241,10 +248,9 @@ class _RestaurantViewState extends State<RestaurantView> {
             double scrollPosition = index * 100.w;
             // 3번째 버튼부터는 스크롤 위치가 고정되도록 처리
             if (index >= 3) {
-              scrollPosition = (index-2)* 100.w;
-            }
-            else{
-              scrollPosition =0;
+              scrollPosition = (index - 2) * 100.w;
+            } else {
+              scrollPosition = 0;
             }
             _scrollController.animateTo(
               scrollPosition, // 각 버튼의 너비에 맞춰 이동 (간격 조정)
@@ -258,9 +264,8 @@ class _RestaurantViewState extends State<RestaurantView> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: _selectedCategoryIndex == index
-                  ? Colors.black
-                  : Colors.grey,
+              color:
+                  _selectedCategoryIndex == index ? Colors.black : Colors.grey,
               width: 1,
             ),
             color: _selectedCategoryIndex == index
@@ -271,9 +276,8 @@ class _RestaurantViewState extends State<RestaurantView> {
             category,
             style: TextStyle(
               fontSize: 15,
-              color: _selectedCategoryIndex == index
-                  ? Colors.black
-                  : Colors.grey,
+              color:
+                  _selectedCategoryIndex == index ? Colors.black : Colors.grey,
             ),
           ),
         ),

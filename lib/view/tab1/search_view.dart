@@ -33,6 +33,7 @@ class _SearchViewState extends State<SearchView> {
 
   @override
   Widget build(BuildContext context) {
+    // TODO : 화면 틀 좌우 여백 20.sp로 통일 필요
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CustomAppBar(

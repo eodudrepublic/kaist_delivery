@@ -15,4 +15,7 @@ class AppColors {
 
   // 검색 아이콘에 쓰이는 회색
   static const Color searchIconColor = Color(0xFFAEAEAE);
+
+  // 목록에 쓰일 회색
+  static const Color listBackgroundColor = Color(0x99CACACA);
 }
