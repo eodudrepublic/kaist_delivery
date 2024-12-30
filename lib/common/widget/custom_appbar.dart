@@ -62,7 +62,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           if (centerWidget != null)
             Expanded(
                 child: Container(
-                    padding: EdgeInsets.only(left: 25.sp),
+                    padding: EdgeInsets.only(left: 15.sp),
                     alignment: Alignment.centerRight,
                     child: centerWidget!))
           // 2-1. 가운데 제목
