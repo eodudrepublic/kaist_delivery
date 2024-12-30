@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kaist_delivery/view/tab1/widget/restaurant_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get.dart';
+import '../../common/widget/custom_appbar.dart';
 import '../../controller/tab1/restaurant_controller.dart';
 
 class RestaurantView extends StatelessWidget {
@@ -26,6 +27,12 @@ class RestaurantView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: const CustomAppBar(
+        titleText: 'K-밥심',
+        rightIconPath: 'assets/icon/search_icon.png',
+        // TODO : onRightIconTap -> 정의
+        // tab1, tab2에서 모두 search 페이지로 넘어가도록
+      ),
       body: Obx(() {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());

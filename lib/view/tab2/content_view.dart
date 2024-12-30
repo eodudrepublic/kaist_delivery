@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kaist_delivery/common/widget/custom_appbar.dart';
 import '../../controller/tab2/content_controller.dart';
 
 class ContentView extends StatelessWidget {
@@ -22,22 +23,30 @@ class ContentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => controller.isLoading.value
-        ? const Center(child: CircularProgressIndicator())
-        : controller.contentList.isEmpty
-            ? const Center(child: Text('추천 메뉴가 없습니다.'))
-            : Container(
-                constraints: const BoxConstraints.expand(),
-                padding: EdgeInsets.symmetric(horizontal: 0.1.sw),
-                color: Colors.white,
-                child: ListView.builder(
-                  itemCount: controller.contentList.length,
-                  itemBuilder: (context, index) {
-                    final content = controller.contentList[index];
-                    return _contentCard(context, content, index); // index 전달
-                  },
-                ),
-              ));
+    return Scaffold(
+      appBar: const CustomAppBar(
+        titleText: '맛집 소개',
+        rightIconPath: 'assets/icon/search_icon.png',
+        // TODO : onRightIconTap -> 정의
+        // tab1, tab2에서 모두 search 페이지로 넘어가도록
+      ),
+      body: Obx(() => controller.isLoading.value
+          ? const Center(child: CircularProgressIndicator())
+          : controller.contentList.isEmpty
+              ? const Center(child: Text('추천 메뉴가 없습니다.'))
+              : Container(
+                  constraints: const BoxConstraints.expand(),
+                  padding: EdgeInsets.symmetric(horizontal: 0.1.sw),
+                  color: Colors.white,
+                  child: ListView.builder(
+                    itemCount: controller.contentList.length,
+                    itemBuilder: (context, index) {
+                      final content = controller.contentList[index];
+                      return _contentCard(context, content, index); // index 전달
+                    },
+                  ),
+                )),
+    );
   }
 
   /// _contentCard 위젯 : 음식점 소개 카드 위젯

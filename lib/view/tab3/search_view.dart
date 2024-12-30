@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kaist_delivery/common/widget/custom_appbar.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../common/app_colors.dart';
 import '../../controller/tab3/search_controller.dart';
@@ -33,69 +34,17 @@ class _SearchViewState extends State<SearchView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Column(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: CustomAppBar(
+        leftIconPath: 'assets/icon/back_icon.png',
+        onLeftIconTap: () {
+          // TODO : Get.back();
+        },
+        centerWidget: buildSearchBar(),
+      ),
+      body: Column(
         children: [
-          // 검색창
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 15.sp, vertical: 25.sp),
-            decoration: BoxDecoration(
-              color: AppColors.searchBackgroundColor,
-              border: Border.all(
-                color: AppColors.searchIconColor,
-                width: 1.5.sp,
-              ),
-              borderRadius: BorderRadius.circular(22.r),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  spreadRadius: 0.5,
-                  blurRadius: 5,
-                  offset: const Offset(0, 3),
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: searchController,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.transparent,
-                      border: const OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                      ),
-                      contentPadding: EdgeInsets.symmetric(
-                        vertical: 0,
-                        horizontal: 20.sp,
-                      ),
-                    ),
-                    cursorColor: AppColors.searchIconColor,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    onSubmitted: (value) {
-                      controller.searchRestaurants(value); // 키보드 완료 버튼 눌렀을 때 검색
-                    },
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(
-                    Icons.search,
-                    color: AppColors.searchIconColor,
-                    size: 40.sp,
-                  ),
-                  onPressed: () {
-                    controller.searchRestaurants(searchController.text);
-                  },
-                ),
-              ],
-            ),
-          ),
           // 검색 결과 리스트
           Expanded(
             child: Obx(() {
@@ -128,6 +77,73 @@ class _SearchViewState extends State<SearchView> {
                 },
               );
             }),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // TODO : 검색 페이지에 쓰일 검색바 위젯 -> AppBar에 들어감
+  Widget buildSearchBar() {
+    return Container(
+      height: 40.sp,
+      decoration: BoxDecoration(
+        color: AppColors.searchBackgroundColor,
+        border: Border.all(
+          color: AppColors.searchIconColor,
+          width: 1.sp,
+        ),
+        borderRadius: BorderRadius.circular(15.r),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            spreadRadius: 0.25,
+            blurRadius: 2.5,
+            offset: const Offset(0, 1),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: searchController,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.transparent,
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                ),
+                contentPadding: EdgeInsets.symmetric(
+                  vertical: 0,
+                  horizontal: 15.sp,
+                ),
+                hintText: '검색어를 입력해주세요',
+              ),
+              cursorColor: AppColors.searchIconColor,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 15.sp,
+                fontWeight: FontWeight.bold,
+              ),
+              onSubmitted: (value) {
+                controller.searchRestaurants(value); // 키보드 완료 버튼 눌렀을 때 검색
+              },
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(right: 10.sp),
+            child: GestureDetector(
+              onTap: () {
+                // 검색 버튼 누를 때
+                controller.searchRestaurants(searchController.text);
+              },
+              child: Icon(
+                Icons.search,
+                color: AppColors.searchIconColor,
+                size: 30.sp,
+              ),
+            ),
           ),
         ],
       ),

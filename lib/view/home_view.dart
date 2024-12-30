@@ -6,7 +6,6 @@ import 'package:kaist_delivery/controller/tab3/search_controller.dart';
 import 'package:kaist_delivery/view/tab1/restaurant_view.dart';
 import 'package:kaist_delivery/view/tab2/content_view.dart';
 import 'package:kaist_delivery/view/tab3/search_view.dart';
-import '../common/widget/custom_appbar.dart';
 import '../common/widget/custom_bnb.dart';
 
 class HomeView extends StatefulWidget {
@@ -34,7 +33,6 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
       body: _pages[_currentIndex],
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
