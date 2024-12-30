@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:kaist_delivery/common/widget/custom_appbar.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../common/app_colors.dart';
-import '../../controller/tab3/search_controller.dart';
-import '../tab1/widget/restaurant_card.dart';
+import '../../controller/tab1/restaurant_controller.dart';
+import 'widget/restaurant_card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchView extends StatefulWidget {
@@ -16,7 +16,7 @@ class SearchView extends StatefulWidget {
 
 class _SearchViewState extends State<SearchView> {
   // HomeBinding에서 Get.lazyPut으로 초기화한 RestaurantSearchController를 사용
-  final RestaurantSearchController controller = Get.find();
+  final RestaurantController controller = Get.find();
   late TextEditingController searchController = TextEditingController();
 
   @override
@@ -27,7 +27,6 @@ class _SearchViewState extends State<SearchView> {
 
   @override
   void dispose() {
-    searchController.dispose(); // 검색 컨트롤러 메모리 정리
     controller.clearSearchResults(); // 검색 결과 초기화
     super.dispose();
   }

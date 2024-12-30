@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:kaist_delivery/view/home_view.dart';
 import 'package:kaist_delivery/view/tab1/restaurant_view.dart';
 import 'package:kaist_delivery/view/tab2/content_view.dart';
-import 'package:kaist_delivery/view/tab3/search_view.dart';
+import 'package:kaist_delivery/view/tab1/search_view.dart';
 
 void main() {
   runApp(const MyApp());

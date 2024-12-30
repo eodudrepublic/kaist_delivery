@@ -40,7 +40,8 @@ class RestaurantCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
       decoration: BoxDecoration(
-        color: isOpen ? Colors.white : Colors.grey.shade300,    // 영업시간 아니면 배경색 흐려짐.
+        color:
+            isOpen ? Colors.white : Colors.grey.shade300, // 영업시간 아니면 배경색 흐려짐.
         borderRadius: BorderRadius.circular(5), // 둥근 모서리
         boxShadow: [
           BoxShadow(
@@ -86,7 +87,6 @@ class RestaurantCard extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 0.01.sh),
-                // TODO : 영업시간이 아니면 흐려지게 / 아니면 아래에 위치하는 기능 추가
                 Row(
                   children: [
                     Icon(Icons.access_time, size: 16.sp, color: Colors.grey),
