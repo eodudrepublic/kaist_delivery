@@ -95,6 +95,7 @@ class _RestaurantViewState extends State<RestaurantView> {
         return RestaurantCard(
           restaurant: restaurant,
           onCall: controller.call,
+          onMap: controller.navermap,
         );
       },
     );

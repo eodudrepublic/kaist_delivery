@@ -73,6 +73,18 @@ class _SearchViewState extends State<SearchView> {
                         Get.snackbar('오류', '전화 연결 실패: $e');
                       }
                     },
+                    onMap: (placeid){
+                      final Uri launchUri = Uri(
+                          scheme: 'nmap',
+                          host: 'place',
+                          queryParameters: {'placeid': placeid}
+                      );
+                      try{
+                        launchUrl(launchUri);
+                      } catch (e) {
+                        Get.snackbar('오류', '지도 연결 실패: $e');
+                      }
+                    },
                   );
                 },
               );

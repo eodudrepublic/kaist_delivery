@@ -18,13 +18,7 @@ class RestaurantController extends GetxController {
   // 카테고리 관련
   var selectedCategoryIndex = 0.obs;
   final List<String> categories = [
-    '전체',
-    '한식',
-    '중식',
-    '분식',
-    '일식',
-    '야식',
-    '아시안',
+    '전체', '한식', '중식', '분식', '일식', '야식', '아시안',
   ];
 
   // 페이지 관련
@@ -59,7 +53,7 @@ class RestaurantController extends GetxController {
     }
   }
 
-  // 카테고리별 필터링 함수
+  // 카테고리 필터링 함수
   void filterRestaurantsByCategory() {
     if (selectedCategoryIndex.value == 0) {
       filteredList.assignAll(restaurantList);
@@ -79,6 +73,7 @@ class RestaurantController extends GetxController {
 
     List<Restaurant> sortedList = List.from(restaurantList);
     sortedList.sort((a, b) {
+      //A 운영 시간
       DateTime openA = DateTime(
           now.year,
           now.month,
@@ -91,9 +86,10 @@ class RestaurantController extends GetxController {
           now.day,
           int.parse(a.closeTime.split(':')[0]),
           int.parse(a.closeTime.split(':')[1]));
+      //새벽까지 운영하는 경우 고려
       if (closeA.isBefore(openA)) closeA = closeA.add(const Duration(days: 1));
       bool isOpenA = now.isAfter(openA) && now.isBefore(closeA);
-
+      //B 가게 운영 시간
       DateTime openB = DateTime(
           now.year,
           now.month,
@@ -109,11 +105,13 @@ class RestaurantController extends GetxController {
       if (closeB.isBefore(openB)) closeB = closeB.add(const Duration(days: 1));
       bool isOpenB = now.isAfter(openB) && now.isBefore(closeB);
 
+      //정렬 기준
       if (isOpenA && !isOpenB) return -1; // A만 영업
       if (!isOpenA && isOpenB) return 1; // B만 영업
       return 0; // 둘 다 열려있거나 닫혀있음
     });
 
+    //초기엔 모든 식당 보여짐.
     restaurantList.assignAll(sortedList);
     filteredList.assignAll(sortedList);
   }
@@ -126,10 +124,19 @@ class RestaurantController extends GetxController {
     }
   }
 
+  // 네이버 지도 연결 기능
+  Future<void> navermap(String name) async {
+    final Uri launchUri = Uri.parse('nmap://search?query=$name&appname=immersion_camp.week1.app.kaist_delivery');
+    if (!await launchUrl(launchUri)) {
+      throw '장소가 없습니다.';
+    }
+  }
+
   // 페이지 이동 관련
   void changeCategory(int index) {
     selectedCategoryIndex.value = index;
     pageController.jumpToPage(index);
+    // 3번째 카테고리까지는 스와이프 되지 않고, 4번째부터 스와이프 되도록.
     double scrollPosition = index * 100.0;
     if (index >= 3) {
       scrollPosition = (index - 2) * 100.0;
@@ -137,7 +144,7 @@ class RestaurantController extends GetxController {
       scrollPosition = 0;
     }
     scrollController.animateTo(scrollPosition,
-        duration: const Duration(milliseconds: 200), curve: Curves.easeInOut);
+        duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
   }
 
   // 검색 기능 구현
