@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import '../common/util/logger.dart';
 
 class DatabaseHelper {
   // 싱글턴(Singleton) 패턴
@@ -12,8 +13,13 @@ class DatabaseHelper {
 
   // DB 인스턴스를 얻는 getter
   Future<Database> get database async {
-    if (_database != null) return _database!;
-    _database = await _initDB('kaist_delivery.db');
+    if (_database != null) {
+      Log.info('DB is already opened');
+      return _database!;
+    }
+    String dbName = 'kaist_delivery.db';
+    Log.info('DB is not opened yet. Opening DB : $dbName');
+    _database = await _initDB(dbName);
     return _database!;
   }
 
@@ -21,8 +27,10 @@ class DatabaseHelper {
     Directory documentsDirectory;
     // iOS는 getLibraryDirectory, Android는 getApplicationDocumentsDirectory
     if (Platform.isIOS) {
+      Log.info('Platform: iOS');
       documentsDirectory = await getLibraryDirectory();
     } else {
+      Log.info('Platform: Android');
       documentsDirectory = await getApplicationDocumentsDirectory();
     }
 
@@ -45,5 +53,6 @@ class DatabaseHelper {
         name TEXT
       )
     ''');
+    Log.info('DB Table created: pick');
   }
 }
