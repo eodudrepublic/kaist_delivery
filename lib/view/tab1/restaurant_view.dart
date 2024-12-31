@@ -37,18 +37,30 @@ class _RestaurantViewState extends State<RestaurantView> {
           return Column(
             children: [
               /// 상단 카테고리
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 5.h),
-                child:
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal, // 수평 방향으로 스크롤되는 카테고리 버튼
-                  controller: controller.scrollController,
-                  child: Row(
-                    children:
-                        List.generate(controller.categories.length, (index) {
-                      return _categoryButton(
-                          controller.categories[index], index);
-                    }),
+              Container(
+                margin: EdgeInsets.only(bottom: 5.h),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: const Border(
+                    bottom: BorderSide(
+                      color: Colors.grey, // 경계선 색상
+                      width: 1, // 경계선 두께
+                    ),
+                  ),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.sp),
+                  child:
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal, // 수평 방향으로 스크롤되는 카테고리 버튼
+                    controller: controller.scrollController,
+                    child: Row(
+                      children:
+                      List.generate(controller.categories.length, (index) {
+                        return _categoryButton(
+                            controller.categories[index], index);
+                      }),
+                    ),
                   ),
                 ),
               ),
@@ -108,18 +120,16 @@ class _RestaurantViewState extends State<RestaurantView> {
           controller.changeCategory(index);
         },
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 5.h),
+          padding: EdgeInsets.symmetric(horizontal: 15.sp, vertical: 10.h),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(
-              color: controller.selectedCategoryIndex.value == index
-                  ? Colors.black
-                  : Colors.grey,
-              width: 1,
-            ),
-            color: controller.selectedCategoryIndex.value == index
-                ? AppColors.mainThemeColor
-                : Colors.white,
+            border: controller.selectedCategoryIndex.value == index
+                ? const Border(
+                  bottom: BorderSide(
+                    color: Colors.black, // 선택된 상태의 색상
+                    width: 1.2, // 테두리 두께
+                  ),
+                )
+                : null, // 선택되지 않았을 때는 테두리 없음
           ),
           child: Text(
             category,

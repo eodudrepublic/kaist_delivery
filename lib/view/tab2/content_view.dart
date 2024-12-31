@@ -126,7 +126,12 @@ class _ContentViewState extends State<ContentView> {
         (initialPage % controller.contentList.length);
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 40.sp, horizontal: 8.sp),
+      padding: EdgeInsets.only(
+        left: 8.sp,
+        right: 8.sp,
+        top: 30.sp,
+        bottom: 40.sp,
+      ),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.r),

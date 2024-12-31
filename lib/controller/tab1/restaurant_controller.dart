@@ -173,7 +173,8 @@ class RestaurantController extends GetxController {
   void searchRestaurants(String query) {
     if (query.isEmpty) {
       // 검색어 없으면 전체 표시
-      searchList.assignAll(restaurantList);
+      //searchList.assignAll(restaurantList);
+      searchList.clear();
     } else {
       searchList.assignAll(
         restaurantList.where(
@@ -185,7 +186,8 @@ class RestaurantController extends GetxController {
 
   /// 검색 결과 초기화 (search 화면에서 뒤로가기 시 전체 복원 등)
   void clearSearchResults() {
-    searchList.assignAll(restaurantList);
+    //searchList.assignAll(restaurantList);
+    searchList.clear();
   }
 
   // 전화 걸기 기능
