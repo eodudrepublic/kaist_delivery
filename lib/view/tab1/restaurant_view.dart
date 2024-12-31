@@ -25,7 +25,7 @@ class _RestaurantViewState extends State<RestaurantView> {
         titleText: 'K-밥심',
         rightIconPath: 'assets/icon/search_icon.png',
         onRightIconTap: () {
-          // TODO: Add search functionality
+          Get.toNamed('/search');
         },
       ),
       body: Obx(() {
@@ -34,10 +34,6 @@ class _RestaurantViewState extends State<RestaurantView> {
         } else if (controller.restaurantList.isEmpty) {
           return const Center(child: Text('레스토랑이 없습니다.'));
         } else {
-          // 레스토랑 리스트 정렬 -> 영업시간 아닌 식당은 아래에 위치하도록
-          controller.sortRestaurants();
-          controller.filterRestaurantsByCategory();
-
           return Column(
             children: [
               // 상단 카테고리
@@ -89,9 +85,9 @@ class _RestaurantViewState extends State<RestaurantView> {
   // 카테고리 페이지
   Widget _categoryPage(String category) {
     return ListView.builder(
-      itemCount: controller.filteredList.length,
+      itemCount: controller.filteredListMain.length,
       itemBuilder: (context, index) {
-        final restaurant = controller.filteredList[index];
+        final restaurant = controller.filteredListMain[index];
         return RestaurantCard(
           restaurant: restaurant,
           onCall: controller.call,

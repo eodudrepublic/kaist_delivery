@@ -47,14 +47,14 @@ class _SearchViewState extends State<SearchView> {
                 return const Center(child: CircularProgressIndicator());
               }
 
-              if (controller.filteredList.isEmpty) {
+              if (controller.searchList.isEmpty) {
                 return const Center(child: Text('검색 결과가 없습니다.'));
               }
 
               return ListView.builder(
-                itemCount: controller.filteredList.length,
+                itemCount: controller.searchList.length,
                 itemBuilder: (context, index) {
-                  final restaurant = controller.filteredList[index];
+                  final restaurant = controller.searchList[index];
                   return RestaurantCard(
                     restaurant: restaurant,
                     onCall: (phoneNumber) {
