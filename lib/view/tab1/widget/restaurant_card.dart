@@ -40,7 +40,7 @@ class RestaurantCard extends StatelessWidget {
     bool isOpen = now.isAfter(openTime) && now.isBefore(closeTime);
 
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+      margin: EdgeInsets.symmetric(vertical: 10.h),
       decoration: BoxDecoration(
         color:
             isOpen ? Colors.white : Colors.grey.shade300, // 영업시간 아니면 배경색 흐려짐.

@@ -36,10 +36,11 @@ class _RestaurantViewState extends State<RestaurantView> {
         } else {
           return Column(
             children: [
-              // 상단 카테고리
+              /// 상단 카테고리
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 5.h),
+                child:
+                SingleChildScrollView(
                   scrollDirection: Axis.horizontal, // 수평 방향으로 스크롤되는 카테고리 버튼
                   controller: controller.scrollController,
                   child: Row(
@@ -85,6 +86,7 @@ class _RestaurantViewState extends State<RestaurantView> {
   // 카테고리 페이지
   Widget _categoryPage(String category) {
     return ListView.builder(
+      padding: EdgeInsets.symmetric(horizontal: 20.sp),
       itemCount: controller.filteredListMain.length,
       itemBuilder: (context, index) {
         final restaurant = controller.filteredListMain[index];
@@ -100,13 +102,13 @@ class _RestaurantViewState extends State<RestaurantView> {
   // 카테고리 버튼
   Widget _categoryButton(String category, int index) {
     return Padding(
-      padding: EdgeInsets.only(right: 10.w),
+      padding: EdgeInsets.only(right: 10.w,),
       child: GestureDetector(
         onTap: () {
           controller.changeCategory(index);
         },
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
+          padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 5.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
