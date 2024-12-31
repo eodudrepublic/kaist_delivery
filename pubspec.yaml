@@ -33,6 +33,7 @@ dependencies:
 
   get: ^4.6.6
   url_launcher: ^6.3.1
+  logger: ^2.4.0
 
   flutter_native_splash: ^2.4.3
   cupertino_icons: ^1.0.8
