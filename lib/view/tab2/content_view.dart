@@ -70,7 +70,7 @@ class ContentView extends StatelessWidget {
             style: TextStyle(
               fontSize: 20.sp,
               color: Colors.black,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w600,
             ),
           ),
           Container(
@@ -102,7 +102,7 @@ class ContentView extends StatelessWidget {
               content.name,
               style: TextStyle(
                 fontSize: 24.sp,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w700,
               ),
             ),
           ),
@@ -110,7 +110,7 @@ class ContentView extends StatelessWidget {
             content.content,
             style: TextStyle(
               fontSize: 18.sp,
-              // fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ],
