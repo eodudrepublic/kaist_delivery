@@ -89,7 +89,6 @@ class _SearchViewState extends State<SearchView> {
     );
   }
 
-  // TODO : 검색 페이지에 쓰일 검색바 위젯 -> AppBar에 들어감
   Widget buildSearchBar() {
     return Container(
       height: 40.sp,

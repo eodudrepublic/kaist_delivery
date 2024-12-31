@@ -36,17 +36,41 @@ class PickView extends StatelessWidget {
                 : _guideContainer(controller), // Container 1
 
             // "나의 Pick" 헤더
-            // TODO : 목록 DB에 데이터하는 기능 추가 필요
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 10.sp),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '나의 Pick',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.sp, vertical: 10.sp),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '나의 Pick',
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
-              ),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed('/home/contents/edit');
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 20.sp, vertical: 10.sp),
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      '수정하기',
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        color: Colors.indigo, // 텍스트 클릭 가능한 색상
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
 
             // 리스트 영역
