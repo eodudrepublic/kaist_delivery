@@ -19,8 +19,7 @@ class PickView extends StatelessWidget {
         titleText: '오늘의 Pick',
         rightIconPath: 'assets/icon/search_icon.png',
         onRightIconTap: () {
-          // TODO : Get.toNamed('/search');
-          // tab1, tab2, tab3에서 모두 search 페이지로 넘어가도록
+          Get.toNamed('/search');
         },
       ),
       body: Obx(() {

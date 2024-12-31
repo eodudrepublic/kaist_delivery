@@ -43,6 +43,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.mainThemeColor,
+      automaticallyImplyLeading: false,
       // 가운데 영역
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
