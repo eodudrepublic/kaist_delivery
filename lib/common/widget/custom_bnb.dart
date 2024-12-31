@@ -95,7 +95,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
             Text(
               label,
               style: TextStyle(
-                fontSize: 12.sp,
+                fontFamily: "Titlefont",
+                fontWeight: FontWeight.normal,
+                fontSize: 10.sp,
                 color: isSelected
                     ? AppColors.mainThemeDarkColor // 선택된 경우 진한 노랑색
                     : Colors.black, // 선택되지 않은 경우 검은색

@@ -18,6 +18,9 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(390, 850),
       child: GetMaterialApp(
+        theme: ThemeData(
+          fontFamily: "Pretendard"
+        ),
         initialRoute: '/home',
         getPages: [
           GetPage(

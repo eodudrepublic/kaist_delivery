@@ -126,6 +126,8 @@ class _RestaurantViewState extends State<RestaurantView> {
           child: Text(
             category,
             style: TextStyle(
+              fontFamily: "Pretendard",
+              fontWeight: FontWeight.w600,
               fontSize: 15,
               color: controller.selectedCategoryIndex.value == index
                   ? Colors.black

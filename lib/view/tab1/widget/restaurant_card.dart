@@ -68,7 +68,7 @@ class RestaurantCard extends StatelessWidget {
         title: Text(
           restaurant.name,
           style: TextStyle(
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w700,
             fontSize: 16.sp,
           ),
         ),
@@ -84,7 +84,7 @@ class RestaurantCard extends StatelessWidget {
                     SizedBox(width: 5.w),
                     Text(
                       restaurant.phone,
-                      style: TextStyle(fontSize: 14.sp),
+                      style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
@@ -92,9 +92,10 @@ class RestaurantCard extends StatelessWidget {
                 Row(
                   children: [
                     Icon(Icons.access_time, size: 16.sp, color: Colors.grey),
+                    SizedBox(width: 5.w),
                     Text(
                       '${restaurant.openTime} - ${restaurant.closeTime}',
-                      style: TextStyle(fontSize: 14.sp),
+                      style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
@@ -116,6 +117,7 @@ class RestaurantCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14.sp,
                       color: Colors.indigo,  // 텍스트 클릭 가능한 색상
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
@@ -129,6 +131,7 @@ class RestaurantCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14.sp,
                       color: Colors.indigo,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),

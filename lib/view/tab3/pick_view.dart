@@ -44,8 +44,8 @@ class PickView extends StatelessWidget {
               child: Text(
                 '나의 Pick',
                 style: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
@@ -81,7 +81,7 @@ class PickView extends StatelessWidget {
                         pick.name,
                         style: TextStyle(
                           fontSize: 15.sp,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     );
@@ -115,7 +115,7 @@ class PickView extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 20.sp,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w600,
             ),
           ),
           SizedBox(height: 14.sp),
@@ -140,7 +140,7 @@ class PickView extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16.sp,
                   color: Colors.black,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),
@@ -168,7 +168,7 @@ class PickView extends StatelessWidget {
           // 오늘의 Pick 표시
           Text(
             '오늘의 Pick은 ~??',
-            style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
           ),
           SizedBox(height: 8.sp),
 
@@ -190,7 +190,7 @@ class PickView extends StatelessWidget {
               controller.selectedPick.value,
               style: TextStyle(
                 fontSize: 20.sp,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w700,
               ),
             ),
           ),
