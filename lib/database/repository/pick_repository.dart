@@ -33,4 +33,14 @@ class PickRepository {
   Future<int> deleteAllPicks() async {
     return await _dao.deleteAllPicks();
   }
+
+  // 특정 이름으로 삭제
+  Future<int> deletePickByName(String name) async {
+    return await _dao.deleteByName(name);
+  }
+
+  // 특정 이름을 새 이름으로 업데이트
+  Future<int> updatePickName(String oldName, String newName) async {
+    return await _dao.updateName(oldName, newName);
+  }
 }

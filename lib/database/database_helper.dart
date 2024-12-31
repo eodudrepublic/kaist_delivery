@@ -13,8 +13,7 @@ class DatabaseHelper {
   // DB 인스턴스를 얻는 getter
   Future<Database> get database async {
     if (_database != null) return _database!;
-    _database = await _initDB('your_database_name.db'); // 파일명 적절히
-    // Log.info("Database init at $_database"); // logger 사용시
+    _database = await _initDB('kaist_delivery.db');
     return _database!;
   }
 
@@ -34,7 +33,6 @@ class DatabaseHelper {
       dbPath,
       version: 1,
       onCreate: _createDB,
-      // onUpgrade: _upgradeDB, // 필요시 구현
     );
   }
 
@@ -47,19 +45,5 @@ class DatabaseHelper {
         name TEXT
       )
     ''');
-
-    // 필요하다면 다른 테이블도 생성
-    // await db.execute('''
-    //   CREATE TABLE some_other_table (
-    //     ...
-    //   )
-    // ''');
   }
-
-// 필요하다면 DB 버전 업그레이드 로직도 추가할 수 있음
-// Future<void> _upgradeDB(Database db, int oldVersion, int newVersion) async {
-//   if (oldVersion < newVersion) {
-//     // 테이블 추가, 마이그레이션 로직 등
-//   }
-// }
 }

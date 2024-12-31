@@ -62,4 +62,25 @@ class PickDao {
     final Database db = await dbHelper.database;
     return await db.delete('pick');
   }
+
+  // DELETE: 특정 이름으로
+  Future<int> deleteByName(String name) async {
+    final db = await dbHelper.database;
+    return await db.delete(
+      'pick',
+      where: 'name = ?',
+      whereArgs: [name],
+    );
+  }
+
+  // UPDATE: oldName → newName
+  Future<int> updateName(String oldName, String newName) async {
+    final db = await dbHelper.database;
+    return await db.update(
+      'pick',
+      {'name': newName},
+      where: 'name = ?',
+      whereArgs: [oldName],
+    );
+  }
 }
