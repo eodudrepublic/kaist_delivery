@@ -128,7 +128,6 @@ class _EditListViewState extends State<EditListView> {
                             final TextEditingController dialogEditController =
                                 TextEditingController(text: pick.name);
 
-                            // TODO : AlertDialog 디자인 좀 수정해주세요...
                             return AlertDialog(
                               backgroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
