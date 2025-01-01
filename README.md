@@ -15,16 +15,15 @@
 # Team
 
 ### 김대영 
-
-<!-- TODO : 김대영 사진 -->
+<img src="https://github.com/user-attachments/assets/fcf6cbc6-553f-432f-bbe5-ac1a83da3706" alt="김대영" width="200">
 
 - 부산대학교 정보컴퓨터공학부 20학번
 
 ### 최연우  
-
-<!-- TODO : 최연우 사진 -->
+<img src="https://github.com/user-attachments/assets/6f8acc69-c283-4932-9a15-c38b78502143" alt="최연우" width="200">
 
 - 카이스트 전산학부 22학번
+
 
 # Tech Stack
 
@@ -46,32 +45,23 @@
 > 앱을 처음 실행할 때 나타나는 화면
 > 
 
-<!-- 스플래쉬 화면 영상 삽입 -->
-
-Splash Screen
+[Splash Screen](https://github.com/user-attachments/assets/2f14fc1d-4868-469f-98fc-cf13396920ad)
 
 - `flutter_native_splash`를 이용하여 구현
 
 ## 2. Tab 1 (Home)
 
 > KAIST 기숙사까지 배달 오는 가게에 대한 정보를 제공하는 탭
-> 
+>
+ 
+   [Tab 1. 전체 기능 실행 영상](https://github.com/user-attachments/assets/6a075380-92ed-481c-9d0b-4c09697199a6)
 
-<!-- 전체 기능 실행 영상 삽입 -->
+   [Tab 1. 카테고리 스와이프 기능](https://github.com/user-attachments/assets/cb133cd8-5f3c-4157-aeb2-340296cbf605)
+ 
+   [Tab 1. 전화 연결 기능](https://github.com/user-attachments/assets/37360387-c927-4a39-a470-7886ba0a5c34)
 
-Tab 1. 전체 기능 실행 영상
+   [Tab 1. 지도 연결 기능](https://github.com/user-attachments/assets/4afa0062-6831-40d9-8e9a-39b15f5d2336)
 
-<!-- 카테고리 스와이프 기능 영상 삽입 -->
-
-Tab 1. 카테고리 스와이프 기능
-
-<!-- 전화 연결 기능 영상 삽입 -->
-
-Tab 1. 전화 연결 기능
-
-<!-- 지도 연결 기능 영상 삽입 -->
-
-Tab 1. 지도 연결 기능
 
 ### 2-1. 가게 정보 리스트
 
@@ -91,9 +81,7 @@ Tab 1. 지도 연결 기능
 > 매일매일 다른 맛집을 소개해주는 탭
 > 
 
-<!-- 전체 기능 영상 삽입 -->
-
-Tab 2. 전체 기능 영상
+[Tab 2. 전체 기능 영상](https://github.com/user-attachments/assets/b7096049-bc7e-4e7e-9f27-346ef314327d)
 
 ### 3-1. 맛집 추천 카드
 
@@ -107,13 +95,9 @@ Tab 2. 전체 기능 영상
 > 나의 Pick 목록에서 랜덤으로 오늘의 Pick을 추천해주는 탭
 > 
 
-<!-- 오늘의 Pick 영상 삽입 -->
+[Tab 3. 오늘의 Pick](https://github.com/user-attachments/assets/b606b773-568b-4d24-9295-9aa1063c0c32)
 
-Tab 3. 오늘의 Pick 
-
-<!-- 나의 Pick 관리 영상 삽입 -->
-
-Tab 3. 나의 Pick 관리
+[Tab 3. 나의 Pick 관리](https://github.com/user-attachments/assets/e5b9a855-1c4f-43c7-a9e2-587418a4bf7c)
 
 ### 4-1. 오늘의 Pick
 
@@ -141,17 +125,11 @@ Tab 3. 나의 Pick 관리
 > AppBar 오른쪽에 위치한 검색 아이콘을 통해 모든 페이지에서 검색 기능 이용 가능
 > 
 
-<!-- Tab 1. 검색 기능 영상 삽입 -->
+[Tab 1. 검색 기능](https://github.com/user-attachments/assets/30bf1116-6dd2-4758-9c7b-5fcff300650b)
 
-Tab 1. 검색 기능
+[Tab 2. 검색 기능](https://github.com/user-attachments/assets/968a0496-ffde-402a-98d7-1d672b2bee8e)
 
-<!-- Tab 2. 검색 기능 영상 삽입 -->
-
-Tab 2. 검색 기능
-
-<!-- Tab 3. 검색 기능 영상 삽입 -->
-
-Tab 3. 검색 기능
+[Tab 3. 검색 기능](https://github.com/user-attachments/assets/11f47840-2079-475d-894b-7478c5b74108)
 
 ### 5-1. 모든 페이지에서 사용 가능한 검색 기능
 
