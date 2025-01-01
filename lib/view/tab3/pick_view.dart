@@ -176,7 +176,7 @@ class PickView extends StatelessWidget {
   /// Container 2 : 메뉴가 추천된 이후( selectedPick != "" )
   Widget _pickedContainer(PickController controller) {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.center,
       height: 0.25.sh,
       decoration: BoxDecoration(
         border: Border(
@@ -185,7 +185,7 @@ class PickView extends StatelessWidget {
       ),
       padding: EdgeInsets.symmetric(horizontal: 20.sp),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // 오늘의 Pick 표시
@@ -215,8 +215,27 @@ class PickView extends StatelessWidget {
                 fontSize: 20.sp,
                 fontWeight: FontWeight.w700,
               ),
+              textAlign: TextAlign.center,
             ),
           ),
+
+          // 다시 뽑기
+          GestureDetector(
+            onTap: () {
+              controller.selectedPick.value = ""; // selectedPick을 빈 문자열로 설정
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 5.sp),
+              child: Text(
+                '다시 뽑기',
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
