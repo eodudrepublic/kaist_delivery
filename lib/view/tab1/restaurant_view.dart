@@ -23,7 +23,7 @@ class _RestaurantViewState extends State<RestaurantView> {
       backgroundColor: Colors.white,
       appBar: CustomAppBar(
         titleText: 'K-밥심',
-        rightIconPath: 'assets/icon/search_icon.png',
+        rightIconWidget: const Icon(Icons.search, color: Colors.black, size: 33,),
         onRightIconTap: () {
           Get.toNamed('/search');
         },
@@ -65,7 +65,7 @@ class _RestaurantViewState extends State<RestaurantView> {
                 ),
               ),
 
-              // NotificationListener로 전체 화면에서 스와이프 감지
+              /// 전체 화면에서 스와이프 감지
               Expanded(
                 child: NotificationListener<ScrollNotification>(
                   onNotification: (notification) {
@@ -95,7 +95,7 @@ class _RestaurantViewState extends State<RestaurantView> {
     );
   }
 
-  // 카테고리 페이지
+  /// 카테고리 페이지
   Widget _categoryPage(String category) {
     return ListView.builder(
       padding: EdgeInsets.symmetric(horizontal: 20.sp),
@@ -111,7 +111,7 @@ class _RestaurantViewState extends State<RestaurantView> {
     );
   }
 
-  // 카테고리 버튼
+  /// 카테고리 버튼
   Widget _categoryButton(String category, int index) {
     return Padding(
       padding: EdgeInsets.only(right: 10.w,),

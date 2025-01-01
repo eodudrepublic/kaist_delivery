@@ -17,7 +17,7 @@ class PickView extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: CustomAppBar(
         titleText: '오늘의 Pick',
-        rightIconPath: 'assets/icon/search_icon.png',
+        rightIconWidget: const Icon(Icons.search, color: Colors.black, size: 33,),
         onRightIconTap: () {
           Get.toNamed('/search');
         },

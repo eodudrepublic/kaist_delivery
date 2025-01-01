@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // AppBar, Icon 등에 쓰이는 연노랑색
+  // 연노랑색
+  static const Color mainThemeLightColor = Color(0xFFFFF8E7);
+
+  // AppBar, Icon 등에 쓰이는 메인 노랑색
   static const Color mainThemeColor = Color(0xFFFEE6A6);
 
   // BottomNavigationBar에 쓰이는 진노랑색
