@@ -19,3 +19,5 @@
 
 ## 📌 주요 기술
 ### Tab 1.
+![image](https://github.com/user-attachments/assets/9c9f0724-e10f-44af-a9cd-ec5386e14d78)
+
