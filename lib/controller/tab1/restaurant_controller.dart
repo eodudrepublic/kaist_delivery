@@ -47,7 +47,7 @@ class RestaurantController extends GetxController {
     filterRestaurantsByCategory(); // → filteredListMain에 카테고리 반영
 
     /// 검색 화면용 리스트는 처음엔 "전체"가 기본값
-    searchList.assignAll(restaurantList);
+    searchList.clear();
   }
 
   // JSON에서 레스토랑 데이터를 로드하는 메서드
